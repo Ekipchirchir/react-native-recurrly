@@ -6,7 +6,7 @@ const SubscriptionDetails = () => {
   return (
     <View>
       <Text>Subscriptions Details: {id} </Text>
-      <Link href="/">Go back</Link>
+      <Link href="/(tabs)/subscriptions">Go back</Link>
     </View>
   )
 }
