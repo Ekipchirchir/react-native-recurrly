@@ -59,6 +59,10 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    "extra": {
+      "posthogProjectToken": "phc_your_project_token_here",
+      "posthogHost": "https://us.i.posthog.com"
     }
   }
 }
