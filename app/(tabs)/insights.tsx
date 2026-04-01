@@ -70,7 +70,7 @@ const Insights = () => {
                 <View className="flex-row gap-4 mb-8">
                     <View className="flex-1 auth-card p-6">
                         <Text className="text-sm font-sans-medium text-muted-foreground">Monthly Spending</Text>
-                        <Text className="text-4xl font-sans-bold text-primary mt-1">
+                        <Text className="text-3xl font-sans-bold text-primary mt-1">
                             {formatCurrency(monthlySpending)}
                         </Text>
                         <Text className="text-xs font-sans-medium text-muted-foreground mt-1">
@@ -80,7 +80,7 @@ const Insights = () => {
 
                     <View className="flex-1 auth-card p-6">
                         <Text className="text-sm font-sans-medium text-muted-foreground">Active Subscriptions</Text>
-                        <Text className="text-4xl font-sans-bold text-primary mt-1">
+                        <Text className="text-3xl font-sans-bold text-primary mt-1">
                             {activeSubscriptions.length}
                         </Text>
                         
