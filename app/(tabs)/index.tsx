@@ -11,12 +11,17 @@ import ListHeading from "@/components/ListHeading";
 import UpcomingSubscriptionCard from "@/components/UpcomingSubscriptionCard";
 import SubscriptionCard from "@/components/SubscriptionCard";
 import { useState } from "react";
+import { usePostHog } from "posthog-react-native";
+import { useUser } from "@clerk/expo";
 
 const SafeAreaView = styled(RNSafeAreaView)
 
 export default function App() {
-
+  const posthog = usePostHog();
   const [expandedSubscriptionId, setExpandedSubscriptionId] = useState<string | null>(null);
+  const { user } = useUser();
+
+  const displayName = user?.fullName || user?.emailAddresses[0]?.emailAddress || 'User';
 
   return (
     <SafeAreaView className="flex-1 bg-background p-5">
@@ -26,8 +31,8 @@ export default function App() {
             <>
               <View className="home-header">
                 <View className="home-user">
-                  <Image source={images.avatar} className="home-avatar"/>
-                  <Text className="home-user-name">{HOME_USER.name}</Text>
+                  <Image source={user?.imageUrl ? { uri: user.imageUrl } : images.avatar} className="home-avatar"/>
+                  <Text className="home-user-name">{displayName}</Text>
                 </View>
                 <Image source={ icons.add } className="home-add-icon"/>
               </View>
@@ -65,7 +70,17 @@ export default function App() {
             <SubscriptionCard 
               {...item} 
               expanded={expandedSubscriptionId === item.id}
-              onPress={() => setExpandedSubscriptionId((currentId) => (currentId === item.id ? null : item.id))}
+              onPress={() => {
+                const isExpanding = expandedSubscriptionId !== item.id;
+                setExpandedSubscriptionId((currentId) => (currentId === item.id ? null : item.id));
+                if (isExpanding) {
+                  posthog.capture('subscription_expanded', {
+                    subscription_id: item.id,
+                    subscription_name: item.name,
+                    subscription_category: item.category,
+                  });
+                }
+              }}
             />
           )}
           keyExtractor={(item) => item.id}
