@@ -72,7 +72,7 @@ export default function App() {
                                 </View>
 
                                 <Pressable onPress={() => setIsModalVisible(true)}>
-                                    <Image source={icons.add} className="home-add-icon" />
+                                    <Image source={icons.plus} className="home-add-icon rounded-full bg-subscription/40 p-2" />
                                 </Pressable>
                             </View>
 
