@@ -1,8 +1,9 @@
 import {Tabs, Redirect} from "expo-router";
 import {tabs} from "@/constants/data";
-import {View, Image} from "react-native";
+import {View} from "react-native";
 import { colors, components } from '@/constants/theme'
 import clsx from "clsx";
+import {Image} from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useAuth } from '@clerk/expo';
 

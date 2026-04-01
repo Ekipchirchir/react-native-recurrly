@@ -24,9 +24,9 @@ declare global {
         price: number;
         currency?: string;
         billing: string;
+        frequency?: string;
         renewalDate?: string;
         color?: string;
-        frequency?: string;
     }
 
     interface SubscriptionCardProps extends Omit<Subscription, "id"> {
