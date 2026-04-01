@@ -58,7 +58,7 @@ const CreateSubscriptionModal = ({ visible, onClose, onSubmit }: CreateSubscript
       status: 'active',
       startDate: now.toISOString(),
       renewalDate: renewalDate.toISOString(),
-      icon: icons.plus,
+      icon: icons.wallet,
       billing: frequency,
       color: CATEGORY_COLORS[category],
     };
